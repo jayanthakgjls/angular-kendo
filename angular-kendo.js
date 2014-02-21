@@ -178,6 +178,10 @@
           timeout(function() {
             var widget = factories.widget(scope, element, attrs, role);
 
+            widget.element.children().each(function (index, item) {
+               compile(item)(scope);
+            });
+
             // if k-rebind attribute is provided, rebind the kendo widget when
             // the watched value changes
             if (attrs.kRebind) {
